@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Tiffany & Co. | Luxury Jewelry, Gifts & Engagement Rings – Official Site</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- RESET & VARIABLES ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --tiffany-blue: #81D8D0;
+      --tiffany-dark: #0F9B8E;
+      --tiffany-light-bg: #f7f9f9;
+      --text-dark: #1a1a1a;
+      --text-muted: #4a4a4a;
+      --border-light: #e6e6e6;
+      --shadow-soft: 0 10px 25px rgba(0,0,0,0.04);
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: #fff;
+      color: var(--text-dark);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ----- TOP PROMO BAR (exact Tiffany style) ----- */
+    .promo-top {
+      background: #f5f5f5;
+      padding: 10px 40px;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      font-weight: 400;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .promo-top i {
+      margin-right: 6px;
+      color: var(--tiffany-dark);
+    }
+
+    /* ----- MAIN HEADER (centered logo + tagline + icon row) ----- */
+    .main-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px 8px;
+    }
+
+    .header-left-icons, .header-right-icons {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-left-icons a, .header-right-icons a {
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-left-icons a:hover, .header-right-icons a:hover {
+      color: var(--tiffany-dark);
+    }
+
+    .cart-bag {
+      position: relative;
+    }
+
+    .cart-count-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--tiffany-dark);
+      color: white;
+      font-size: 0.65rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .logo-area {
+      text-align: center;
+    }
+
+    .logo-main {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 12px;
+      color: var(--text-dark);
+      text-decoration: none;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    .logo-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #666;
+      margin-top: 5px;
+      font-weight: 400;
+    }
+
+    /* ----- NAVIGATION BAR (exact Tiffany categories) ----- */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      padding: 10px 40px 18px;
+      border-bottom: none;
+    }
+
+    .nav-categories {
+      display: flex;
+      list-style: none;
+      gap: 45px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-categories > li {
+      position: relative;
+    }
+
+    .nav-categories > li > a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 0;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+
+    .nav-categories > li > a:hover {
+      color: var(--tiffany-dark);
+    }
+
+    /* Mega dropdown */
+    .mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: #fff;
+      width: 700px;
+      padding: 30px 25px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-light);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: 0.2s ease;
+      display: flex;
+      gap: 40px;
+      z-index: 200;
+    }
+
+    .nav-categories li:hover .mega-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mega-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .mega-col ul {
+      list-style: none;
+    }
+
+    .mega-col li {
+      margin-bottom: 12px;
+    }
+
+    .mega-col a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .mega-col a:hover {
+      color: var(--tiffany-dark);
+    }
+
+    .mega-img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      margin-top: 15px;
+    }
+
+    /* ----- HERO CAROUSEL (with model / woman advertising) ----- */
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      min-height: 650px;
+      overflow: hidden;
+    }
+
+    .carousel-slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center 30%;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.05);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 5;
+      max-width: 600px;
+      margin-left: 12%;
+      color: #fff;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      animation: fadeUp 0.8s;
+    }
+
+    .slide-content h2 {
+      font-size: 4.8rem;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .slide-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+      letter-spacing: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 15px 42px;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: all 0.35s;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: var(--text-dark);
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #1a1a1a;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .arrow-left { left: 30px; }
+    .arrow-right { right: 30px; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 20;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .dot.active {
+      background: #fff;
+      width: 32px;
+      border-radius: 20px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----- FEATURE ICONS BAR (exact Tiffany style) ----- */
+    .feature-strip {
+      display: flex;
+      justify-content: space-around;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-item i {
+      font-size: 2rem;
+      color: var(--tiffany-dark);
+    }
+
+    .feature-item span {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ----- SECTION TITLES (with underline) ----- */
+    .section-title {
+      text-align: center;
+      margin: 90px 0 45px;
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 6px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 2px;
+      background: var(--tiffany-blue);
+      margin: 20px auto 0;
+    }
+
+    /* ----- CATEGORY GRID (with hover scale) ----- */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .category-card {
+      text-decoration: none;
+      color: var(--text-dark);
+      overflow: hidden;
+    }
+
+    .img-zoom {
+      overflow: hidden;
+      aspect-ratio: 1/1;
+    }
+
+    .category-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.2,0.9,0.4,1);
+    }
+
+    .category-card:hover .category-img {
+      transform: scale(1.05);
+    }
+
+    .category-card h3 {
+      font-size: 1.8rem;
+      margin: 18px 0 6px;
+      font-weight: 500;
+    }
+
+    .category-card p {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    /* ----- MOVING PRODUCT CAROUSEL ----- */
+    .product-scroll-wrapper {
+      position: relative;
+      margin: 50px 0;
+    }
+
+    .product-carousel-container {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 20px;
+    }
+
+    .product-carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-carousel {
+      display: flex;
+      gap: 30px;
+    }
+
+    .product-card {
+      flex: 0 0 280px;
+      text-align: center;
+      transition: transform 0.25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin: 18px 0 6px;
+    }
+
+    .product-price {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .scroll-left { left: -5px; }
+    .scroll-right { right: -5px; }
+
+    /* ----- EDITORIAL / JOURNAL ----- */
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .journal-card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .journal-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    .journal-card:hover .journal-img {
+      opacity: 0.85;
+    }
+
+    .journal-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 20px 0 8px;
+      color: var(--tiffany-dark);
+    }
+
+    .journal-title {
+      font-size: 1.5rem;
+      font-family: var(--font-serif);
+      font-weight: 500;
+    }
+
+    /* ----- NEWSLETTER ----- */
+    .newsletter-section {
+      background: var(--tiffany-light-bg);
+      padding: 70px 40px;
+      margin: 80px 0 0;
+      text-align: center;
+    }
+
+    .newsletter-section h3 {
+      font-size: 2.4rem;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 30px auto 0;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 1px solid #ccc;
+      font-family: var(--font-sans);
+      border-right: none;
+    }
+
+    .newsletter-form button {
+      background: var(--text-dark);
+      border: none;
+      color: white;
+      padding: 0 35px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--tiffany-dark);
+    }
+
+    /* ----- FOOTER (detailed, Tiffany style) ----- */
+    footer {
+      background: #fff;
+      padding: 60px 40px 30px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.85rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--tiffany-dark);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 22px;
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: #1a1a1a;
+      font-size: 1.4rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 30px;
+      border-top: 1px solid #ddd;
+      font-size: 0.8rem;
+      color: #666;
+      flex-wrap: wrap;
+    }
+
+    .country-selector i {
+      margin-right: 6px;
+    }
+
+    /* ----- RESPONSIVE (exact adjustments) ----- */
+    @media (max-width: 1100px) {
+      .nav-categories { gap: 25px; }
+    }
+
+    @media (max-width: 992px) {
+      .category-grid, .journal-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(3, 1fr); }
+      .mega-dropdown { width: 500px; }
+    }
+
+    @media (max-width: 768px) {
+      .header-top-row { padding: 15px 20px; }
+      .logo-main { font-size: 2rem; letter-spacing: 6px; }
+      .nav-bar { padding: 5px 20px 15px; overflow-x: auto; justify-content: flex-start; }
+      .nav-categories { flex-wrap: nowrap; gap: 20px; }
+      .slide-content h2 { font-size: 3rem; }
+      .container { padding: 0 20px; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .category-grid, .footer-grid { grid-template-columns: 1fr; }
+      .header-left-icons, .header-right-icons { gap: 12px; }
+    }
+
+    .btn-dark {
+      border-color: var(--text-dark);
+      color: var(--text-dark);
+      margin-top: 20px;
+      display: inline-block;
+    }
+    .btn-dark:hover {
+      background: var(--text-dark);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP PROMO BAR (exact Tiffany copy) -->
+<div class="promo-top">
+  <i class="fas fa-gem"></i> COMPLIMENTARY SHIPPING & RETURNS • ALWAYS COMPLIMENTARY GIFT PACKAGING
+</div>
+
+<!-- MAIN HEADER (centered logo + tagline + icons) -->
+<header class="main-header">
+  <div class="header-top-row">
+    <div class="header-left-icons">
+      <a href="#"><i class="fas fa-search"></i></a>
+      <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+    </div>
+    <div class="logo-area">
+      <a href="#" class="logo-main">TIFFANY & CO.</a>
+      <div class="logo-tagline">NEW YORK SINCE 1837</div>
+    </div>
+    <div class="header-right-icons">
+      <a href="#"><i class="far fa-user"></i></a>
+      <a href="#"><i class="far fa-heart"></i></a>
+      <a href="#" class="cart-bag"><i class="fas fa-shopping-bag"></i><span class="cart-count-badge">3</span></a>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR (exact categories: Jewelry, Gifts, Love & Engagement, Home & Accessories, World of Tiffany, Client Care) -->
+  <div class="nav-bar">
+    <ul class="nav-categories">
+      <li>
+        <a href="#">JEWELRY</a>
+        <div class="mega-dropdown">
+          <div class="mega-col">
+            <h4>CATEGORIES</h4>
+            <ul>
+              <li><a href="#">Necklaces & Pendants</a></li>
+              <li><a href="#">Earrings</a></li>
+              <li><a href="#">Bracelets</a></li>
+              <li><a href="#">Rings</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>FEATURED</h4>
+            <ul>
+              <li><a href="#">Tiffany Lock</a></li>
+              <li><a href="#">Tiffany T</a></li>
+              <li><a href="#">Tiffany Knot</a></li>
+              <li><a href="#">Elsa Peretti®</a></li>
+            </ul>
+            <img src="https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=300" alt="featured" class="mega-img">
+          </div>
+        </div>
+      </li>
+      <li><a href="#">GIFTS</a></li>
+      <li><a href="#">LOVE & ENGAGEMENT</a></li>
+      <li><a href="#">HOME & ACCESSORIES</a></li>
+      <li><a href="#">WORLD OF TIFFANY</a></li>
+      <li><a href="#">CLIENT CARE</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO CAROUSEL (woman model images – advertising) -->
+<section class="hero-carousel">
+  <div class="carousel-slides" id="heroSlides">
+    <!-- slide 1: woman with necklace -->
+    <div class="slide" style="background-image: url('https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+      <div class="slide-content">
+        <h2>Tiffany Lock</h2>
+        <p>An icon of connection</p>
+        <a href="#" class="btn">Discover</a>
+      </div>
+    </div>
+    <!-- slide 2: woman with earrings -->
+    <div class="slide" style="background-image: url('https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+      <div class="slide-content">
+        <h2>Elsa Peretti®</h2>
+        <p>Organic elegance</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+    </div>
+    <!-- slide 3: engagement ring / woman -->
+    <div class="slide" style="background-image: url('https://images.pexels.com/photos/1544860/pexels-photo-1544860.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+      <div class="slide-content">
+        <h2>The Tiffany Setting®</h2>
+        <p>The world's most iconic engagement ring</p>
+        <a href="#" class="btn">Find yours</a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-arrow arrow-left" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+  <button class="carousel-arrow arrow-right" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+<!-- FEATURE ICONS -->
+<div class="container">
+  <div class="feature-strip">
+    <div class="feature-item"><i class="fas fa-gift"></i><span>Complimentary Gift Wrapping</span></div>
+    <div class="feature-item"><i class="fas fa-truck"></i><span>Free Shipping & Returns</span></div>
+    <div class="feature-item"><i class="fas fa-calendar-alt"></i><span>Virtual Appointment</span></div>
+    <div class="feature-item"><i class="fas fa-gem"></i><span>Lifetime Warranty</span></div>
+  </div>
+</div>
+
+<!-- SHOP BY CATEGORY -->
+<div class="container">
+  <h2 class="section-title">Shop by Category</h2>
+  <div class="category-grid">
+    <a href="#" class="category-card">
+      <div class="img-zoom"><img src="https://images.pexels.com/photos/1119969/pexels-photo-1119969.jpeg?auto=compress&cs=tinysrgb&w=600" class="category-img"></div>
+      <h3>Necklaces</h3><p>Timeless elegance</p>
+    </a>
+    <a href="#" class="category-card">
+      <div class="img-zoom"><img src="https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=600" class="category-img"></div>
+      <h3>Rings</h3><p>Celebrate every moment</p>
+    </a>
+    <a href="#" class="category-card">
+      <div class="img-zoom"><img src="https://images.pexels.com/photos/12438034/pexels-photo-12438034.jpeg?auto=compress&cs=tinysrgb&w=600" class="category-img"></div>
+      <h3>Bracelets</h3><p>Modern heirlooms</p>
+    </a>
+    <a href="#" class="category-card">
+      <div class="img-zoom"><img src="https://images.pexels.com/photos/669726/pexels-photo-669726.jpeg?auto=compress&cs=tinysrgb&w=600" class="category-img"></div>
+      <h3>Earrings</h3><p>Effortless sophistication</p>
+    </a>
+  </div>
+</div>
+
+<!-- FEATURED FAVORITES (moving carousel) -->
+<div class="container">
+  <h2 class="section-title">Featured Favorites</h2>
+  <div class="product-scroll-wrapper">
+    <div class="product-carousel-container" id="productCarousel">
+      <div class="product-carousel">
+        <div class="product-card"><img src="https://images.pexels.com/photos/11449680/pexels-photo-11449680.jpeg?auto=compress&cs=tinysrgb&w=400" class="product-img"><div class="product-title">Tiffany T Smile</div><div class="product-price">$1,200</div></div>
+        <div class="product-card"><img src="https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=400" class="product-img"><div class="product-title">Lock Bangle</div><div class="product-price">$6,800</div></div>
+        <div class="product-card"><img src="https://images.pexels.com/photos/1126985/pexels-photo-1126985.jpeg?auto=compress&cs=tinysrgb&w=400" class="product-img"><div class="product-title">Elsa Peretti® Bean</div><div class="product-price">$950</div></div>
+        <div class="product-card"><img src="https://images.pexels.com/photos/2988530/pexels-photo-2988530.jpeg?auto=compress&cs=tinysrgb&w=400" class="product-img"><div class="product-title">Knot Ring</div><div class="product-price">$2,450</div></div>
+        <div class="product-card"><img src="https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=400" class="product-img"><div class="product-title">1837® Ring</div><div class="product-price">$1,550</div></div>
+      </div>
+    </div>
+    <button class="scroll-btn scroll-left" id="scrollLeft"><i class="fas fa-chevron-left"></i></button>
+    <button class="scroll-btn scroll-right" id="scrollRight"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div style="text-align:center; margin: 20px 0 40px;"><a href="#" class="btn btn-dark">View All Jewelry</a></div>
+</div>
+
+<!-- JOURNAL / EDITORIAL -->
+<div class="container">
+  <h2 class="section-title">Tiffany & Co. Journal</h2>
+  <div class="journal-grid">
+    <a href="#" class="journal-card">
+      <img src="https://images.pexels.com/photos/2658567/pexels-photo-2658567.jpeg?auto=compress&cs=tinysrgb&w=600" class="journal-img">
+      <div class="journal-category">STYLE</div>
+      <h3 class="journal-title">The art of layering necklaces</h3>
+    </a>
+    <a href="#" class="journal-card">
+      <img src="https://images.pexels.com/photos/12438034/pexels-photo-12438034.jpeg?auto=compress&cs=tinysrgb&w=600" class="journal-img">
+      <div class="journal-category">CRAFTSMANSHIP</div>
+      <h3 class="journal-title">Inside the Lock collection</h3>
+    </a>
+    <a href="#" class="journal-card">
+      <img src="https://images.pexels.com/photos/1119969/pexels-photo-1119969.jpeg?auto=compress&cs=tinysrgb&w=600" class="journal-img">
+      <div class="journal-category">DIAMONDS</div>
+      <h3 class="journal-title">Guide to diamond clarity</h3>
+    </a>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <h3>Receive exclusive updates</h3>
+  <p>Sign up for style news, first access, and more.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Email address">
+    <button>Sign Up</button>
+  </div>
+</section>
+
+<!-- FOOTER (exact detailed Tiffany footer) -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Client Care</h4>
+      <ul><li><a href="#">Contact Us</a></li><li><a href="#">Shipping & Returns</a></li><li><a href="#">Care & Repair</a></li><li><a href="#">Book Appointment</a></li><li><a href="#">FAQ</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Company</h4>
+      <ul><li><a href="#">World of Tiffany</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Tiffany & Co. Foundation</a></li><li><a href="#">Careers</a></li><li><a href="#">Site Map</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Cookie Settings</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a><a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <div class="country-selector"><i class="fas fa-globe"></i> United States | English</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Tiffany and Company. All rights reserved.</span>
+    <span>Educational project — pixel perfect replica.</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // HERO CAROUSEL
+    const slides = document.getElementById('heroSlides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const dotsContainer = document.getElementById('carouselDots');
+    let currentIndex = 0;
+    let autoInterval;
+
+    function updateCarousel() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function createDots() {
+      for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); resetAuto(); });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function nextSlide() { currentIndex = (currentIndex + 1) % slideCount; updateCarousel(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + slideCount) % slideCount; updateCarousel(); }
+    function resetAuto() { clearInterval(autoInterval); autoInterval = setInterval(nextSlide, 5000); }
+
+    prevBtn.addEventListener('click', () => { prevSlide(); resetAuto(); });
+    nextBtn.addEventListener('click', () => { nextSlide(); resetAuto(); });
+
+    createDots();
+    autoInterval = setInterval(nextSlide, 5000);
+
+    // PRODUCT SCROLL
+    const carousel = document.getElementById('productCarousel');
+    document.getElementById('scrollLeft').addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
+    document.getElementById('scrollRight').addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
+
+    // Sticky header shadow
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.main-header');
+      header.style.boxShadow = window.scrollY > 20 ? '0 6px 20px rgba(0,0,0,0.03)' : 'none';
+    });
+  })();
+</script>
+</body>
+</html>
